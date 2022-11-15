@@ -1,2 +1,2 @@
-# PTQ.py
+# Quant
 # Code for neural network quantization
