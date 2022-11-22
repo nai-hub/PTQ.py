@@ -1,5 +1,6 @@
 from mmdet.apis import init_detector, inference_detector
 
+#总之GitHub老是出错！
 import torch
 
 def main():
@@ -13,3 +14,4 @@ def inside():
 def inside2():
     k = 1
     print(k)
+
