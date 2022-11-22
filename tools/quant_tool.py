@@ -13,3 +13,7 @@ def inside():
 def inside2():
     k = 1
     print(k)
+
+def inside3():
+    k = 1
+    print(k)
