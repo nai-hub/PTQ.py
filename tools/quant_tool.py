@@ -9,3 +9,7 @@ def main():
 def inside():
     j = 1
     print(j)
+
+def inside2():
+    k = 1
+    print(k)
