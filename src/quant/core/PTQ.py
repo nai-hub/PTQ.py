@@ -58,7 +58,7 @@ class PostTrainingStaticQuantization(object):
         self.device = device
 
         if self.calibration_dataloader:
-            self._calibration()
+            self._calibration() # 将模型标准化为量化模型
 
         self.org_model_size = get_model_size(self.model)
         self.org_params_size = get_params_size(self.model) * 4.  # MB
@@ -332,8 +332,8 @@ class PostTrainingStaticQuantization(object):
         if self.cfg.quant_type == 'mix':
             # As mentioned previous, that's how we set the model size limit
             self.model_size_limit = self.quantable_params_size_4bit + \
-                                    (
-                                            self.quantable_params_size_8bit - self.quantable_params_size_4bit) * self.cfg.model_size_limit_ratio
+                                    (self.quantable_params_size_8bit - self.quantable_params_size_4bit) * \
+                                    self.cfg.model_size_limit_ratio
             # Bit width of each layer
             self.bit_width = self.compute_bit_allocation()
             self.logger.info('Bit width of each quantable layer: {} '.format(self.bit_width))
