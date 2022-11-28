@@ -71,6 +71,7 @@ class PostTrainingStaticQuantization(object):
 
             self.org_FLOPs = get_flops(self.model, self.input_shape)
             self.org_BOPs = 32 * 32 * self.org_FLOPs / 1e6  # M
+        self.model = self.put_model_on_gpus(self.model)
 
         self.org_acc = self._test_model(self.model)
 
@@ -232,7 +233,6 @@ class PostTrainingStaticQuantization(object):
         self.model.eval()
 
         quant_prepare(self.model)
-        self.model = self.put_model_on_gpus(self.model)
 
         if self.cfg.target_type == 'detection':
             with torch.no_grad():
