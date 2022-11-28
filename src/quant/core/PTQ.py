@@ -237,7 +237,7 @@ class PostTrainingStaticQuantization(object):
         if self.cfg.target_type == 'detection':
             with torch.no_grad():
                 for idx, data in enumerate(self.calibration_dataloader):
-                    _ = self.model(return_loss=False, **data)
+#                    _ = self.model(return_loss=False, **data)
                     if idx >= 500 - 1:
                         break
 
@@ -245,7 +245,7 @@ class PostTrainingStaticQuantization(object):
             with torch.no_grad():
                 for idx, data in enumerate(self.calibration_dataloader):
                     """inference and collect info"""
-                    output = self.model(**data)
+#                    output = self.model(**data)
 
                     if idx >= 500 - 1:
                         break
